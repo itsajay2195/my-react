@@ -49,3 +49,29 @@
     border-radius: 20;
     
 }
+
+.shimmer-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.shimmer-card{
+    width: 200px;
+    height: 300px;
+    background-color: #F0F0F0;
+    padding: 5px;
+    margin: 5px 10px;
+    border-radius: 20;
+}
+
+.filter{
+    display: flex;
+  
+}
+.search-container{
+    margin: 10px 0px;
+}
+.filter_button{
+    margin: 10px 5px;
+}
