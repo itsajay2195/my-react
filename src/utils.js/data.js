@@ -738,3 +738,6 @@ export const HEADER_LOGO =
 
 export const CLOUDINARY_BASE_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_580,h_320,c_fill/";
+
+export const getRestaruatnUrl = (resId) =>
+  `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`;

@@ -1,5 +1,6 @@
 import React from "react";
 import { HEADER_LOGO } from "../utils.js/data";
+import { Link } from "react-router-dom";
 
 export const Header = React.memo(() => {
   return (
@@ -9,10 +10,18 @@ export const Header = React.memo(() => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link>Contact Us</Link>
+          </li>
+
+          {/* <li>Cart</li> */}
         </ul>
       </div>
     </div>
