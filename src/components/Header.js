@@ -1,8 +1,10 @@
 import React from "react";
 import { HEADER_LOGO } from "../utils.js/data";
 import { Link } from "react-router-dom";
+import useOnlinestatus from "../utils.js/useOnlineStatus";
 
 export const Header = React.memo(() => {
+  const isUserOnline = useOnlinestatus();
   return (
     <div className="header">
       <div className="logo-container">
@@ -10,6 +12,7 @@ export const Header = React.memo(() => {
       </div>
       <div className="nav-items">
         <ul>
+          <li>status:{isUserOnline ? "🟢" : "🔴"}</li>
           <li>
             <Link to="/">Home</Link>
           </li>

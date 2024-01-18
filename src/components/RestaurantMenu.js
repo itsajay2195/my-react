@@ -1,20 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getRestaruatnUrl } from "../utils.js/data";
+import useRestaurantMenu from "../utils.js/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [menu, setData] = useState(null);
   const { resId } = useParams();
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    let data = await fetch(getRestaruatnUrl(10576));
-    const jsonData = await data.json();
-    setData(jsonData.data);
-  };
+  const menu = useRestaurantMenu(resId);
   if (!menu) return null;
   const { name, costForTwoMessage, cuisines } =
     menu?.cards[0]?.card?.card?.info;

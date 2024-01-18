@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { restaurants } from "../utils.js/data";
+import useOnlinestatus from "../utils.js/useOnlineStatus";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 
@@ -31,6 +32,11 @@ const Body = React.memo(() => {
     getData();
   }, []);
 
+  let isUSerConnectedToInternet = useOnlinestatus();
+
+  if (isUSerConnectedToInternet === false) {
+    return <h1>Looks like you are offline</h1>;
+  }
   if (data?.length === 0) {
     return <Shimmer />;
   }
