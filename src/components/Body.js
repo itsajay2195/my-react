@@ -42,14 +42,15 @@ const Body = React.memo(() => {
   }
   return (
     <div className="body">
-      <div className="filter">
-        <div className="search-container">
+      <div className="filter flex">
+        <div className="m-4 p-4">
           <input
+            className=" border border-solid border-black"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           ></input>
           <button
-            className="Search"
+            className="px-4 py-1 bg-green-100 m-4 rounded-lg "
             onClick={() => {
               let filteredData = data.filter((item) =>
                 item?.info?.name.toLowerCase().includes(searchText)
@@ -59,21 +60,21 @@ const Body = React.memo(() => {
           >
             Search
           </button>
-        </div>
 
-        <button
-          className="filter_button"
-          onClick={() => {
-            let filteredData = data.filter(
-              (item) => item?.info?.avgRating > 4.4
-            );
-            setFilteredData(filteredData);
-          }}
-        >
-          Top Rated Restaruants
-        </button>
+          <button
+            className="px-4 py-1 bg-gray-100 rounded-lg"
+            onClick={() => {
+              let filteredData = data.filter(
+                (item) => item?.info?.avgRating > 4.4
+              );
+              setFilteredData(filteredData);
+            }}
+          >
+            Top Rated Restaruants
+          </button>
+        </div>
       </div>
-      <div className="rest-contiainer">
+      <div className="flex flex-wrap">
         {filteredData?.map((item, index) => (
           <Link key={item?.info?.id} to={"/restaurants/" + item?.info?.id}>
             <RestaurantCard resData={item} />
