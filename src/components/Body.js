@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { restaurants } from "../utils.js/data";
 import useOnlinestatus from "../utils.js/useOnlineStatus";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPRomotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 
 const Body = React.memo(() => {
@@ -40,6 +40,8 @@ const Body = React.memo(() => {
   if (data?.length === 0) {
     return <Shimmer />;
   }
+
+  let PromotedRestaurant = withPRomotedLabel(RestaurantCard);
   return (
     <div className="body">
       <div className="filter flex">
@@ -77,7 +79,11 @@ const Body = React.memo(() => {
       <div className="flex flex-wrap">
         {filteredData?.map((item, index) => (
           <Link key={item?.info?.id} to={"/restaurants/" + item?.info?.id}>
-            <RestaurantCard resData={item} />
+            {!item?.data?.promoted ? (
+              <PromotedRestaurant resData={item} />
+            ) : (
+              <RestaurantCard resData={item} />
+            )}
           </Link>
         ))}
       </div>

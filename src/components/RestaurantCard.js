@@ -27,3 +27,16 @@ const RestaurantCard = React.memo(({ resData }) => {
 });
 
 export default RestaurantCard;
+
+export const withPRomotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute mx-4 px-2 rounded-lg bg-black text-white">
+          Promoted
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
