@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React, { Children, useContext } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Header from "./components/Header";
@@ -6,14 +6,20 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./utils.js/UserContext";
 
-const AppLayout = () => (
-  <div id="container">
-    <Header />
-    <Outlet />
-    {/* <Body /> */}
-  </div>
-);
+const AppLayout = () => {
+  let value = { loggedInUser: "AjayKumar" };
+  return (
+    <UserContext.Provider value={value}>
+      <div id="container">
+        <Header />
+        <Outlet />
+        {/* <Body /> */}
+      </div>
+    </UserContext.Provider>
+  );
+};
 
 // const appRouter = createBrowserRouter([
 //   { path: "/", element: <AppLayout />, errorElement: <Error /> },
