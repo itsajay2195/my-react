@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils.js/cartSlice";
 import { CLOUDINARY_BASE_URL } from "../utils.js/data";
 
 const ItemCards = ({ data }) => {
@@ -7,6 +9,12 @@ const ItemCards = ({ data }) => {
   let title = data?.card?.info?.name;
   let price = data?.card?.info?.price || data?.card?.info?.defaultPrice;
   let description = data?.card?.info?.description;
+  let dispatch = useDispatch();
+
+  const handleAddToCart = useCallback(() => {
+    //dispatch an action
+    dispatch(addItem(data?.card?.info));
+  }, []);
   return (
     <div className="my-5 flex p-5 justify-between border-b border-gray-100">
       <div className=" flex flex-col flex-[4] items-start ">
@@ -21,7 +29,10 @@ const ItemCards = ({ data }) => {
             alt="res-logo"
             src={CLOUDINARY_BASE_URL + imageId}
           />
-          <button className="absolute left-6 right-6 bottom-[-10] rounded-lg bg-gray-100 border-2 border-green-300 text-sm">
+          <button
+            onClick={handleAddToCart}
+            className="absolute left-6 right-6 bottom-[-10] rounded-lg bg-gray-100 border-2 border-green-300 text-sm"
+          >
             Add+
           </button>
         </div>
