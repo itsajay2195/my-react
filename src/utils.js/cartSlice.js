@@ -14,7 +14,9 @@ const cartSlice = createSlice({
       state.items.pop();
     },
     clearCart: (state) => {
-      state.items.length = 0;
+      state.items = [];
+      //or
+      //return {items:[]}
     },
   },
 });
@@ -22,3 +24,5 @@ const cartSlice = createSlice({
 export const { addItem, removeITem, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+// state = [] -> is wrong because we are not mutuating

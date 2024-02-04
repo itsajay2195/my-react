@@ -28,7 +28,7 @@ export const Header = React.memo(() => {
             <Link to="/about">About Us</Link>
           </li>
           <li className="px-4">
-            <Link to="/">({cart?.length})Cart</Link>
+            <Link to="/cart">({cart?.length})Cart</Link>
           </li>
           <li className="px-4">
             <Link>Contact Us</Link>
