@@ -7,17 +7,22 @@ import About from "./components/About";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils.js/UserContext";
+import { Provider } from "react-redux";
+import appstore from "./utils.js/store";
+import Cart from "./components/Cart";
 
 const AppLayout = () => {
   let value = { loggedInUser: "AjayKumar" };
   return (
-    <UserContext.Provider value={value}>
-      <div id="container">
-        <Header />
-        <Outlet />
-        {/* <Body /> */}
-      </div>
-    </UserContext.Provider>
+    <Provider store={appstore}>
+      <UserContext.Provider value={value}>
+        <div id="container">
+          <Header />
+          <Outlet />
+          {/* <Body /> */}
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -34,6 +39,7 @@ const approuter1 = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/", element: <Body /> },
       { path: "/restaurants/:resId", element: <RestaurantMenu /> },
+      { path: "/cart", element: <Cart /> },
     ],
     errorElement: <Error />,
   },
